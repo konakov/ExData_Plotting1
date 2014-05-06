@@ -1,6 +1,6 @@
-################
-## Load the data
-################
+###########################################################################
+## Mission: Load the data and drow plot1 (histogram on Global active power)
+###########################################################################
 
 ## For fast loadind, first get the col classes, and then load the data.
 ## Data file name is "household_power_consumption.txt"
@@ -11,7 +11,7 @@ data <- read.table("household_power_consumption.txt", sep=";", header=T, colClas
 ## convert the fist column to data for convience
 data$Date <- as.Date(data$Date, "%d/%m/%Y")
 
-## the project requires inly data for 2007-02-01 and 2007-02-02
+## the project requires only data for 2007-02-01 and 2007-02-02
 data <- subset(data, Date == as.Date("01/02/2007", "%d/%m/%Y") | Date == as.Date("02/02/2007", "%d/%m/%Y"))
 
 ## plot the plot1
