@@ -1,5 +1,5 @@
 ###########################################################################
-## Mission: Load the data and drow plot2 (Global active power by date and time)
+## Mission: Load the data and drow plot3 (thee sub meterings by date and time)
 ###########################################################################
 
 ## For fast loadind, first get the col classes, and then load the data.
@@ -17,9 +17,19 @@ data$date_time <- strptime(paste(data$Date, data$Time), "%d/%m/%Y %H:%M:%S")
 ## Set locale to get "Thu Fri Sat" instead of Russian daynames
 Sys.setlocale("LC_TIME", "C")
 
-## plot the plot2
-png(filename = "plot2.png", width = 480, height = 480, units = "px", pointsize = 12, bg = "white")
-plot(data$date_time, data$Global_active_power, type="l", ylab="Global Active Power (kilowatts)", xlab="")
+## plot the plot3
+png(filename = "plot3.png", width = 480, height = 480, units = "px", pointsize = 12, bg = "white")
+
+plot(data$date_time, data$Sub_metering_1, type="l", ylab="Energy sub metering", xlab="")
+lines(data$date_time, data$Sub_metering_2, col="red")
+lines(data$date_time, data$Sub_metering_3, col="blue")
+
+l_col = c("black", "red", "blue")
+l_legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
+legend("topright", col=l_col, legend=l_legend, pch="—")
+
 dev.off()
 
-print("Plot 2 finished to plot2.png")
+
+
+print("Plot 3 finished to plot3.png")
